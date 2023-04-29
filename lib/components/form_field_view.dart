@@ -32,10 +32,11 @@ class FormFieldView extends StatelessWidget {
                   ),
             ),
           ),
-        TextField(
+        TextFormField(
           controller: controller,
           textAlignVertical: TextAlignVertical.center,
           maxLength: data.maxLenght,
+          inputFormatters: data.formatters ?? [],
           keyboardType: data.keyboardType,
           decoration: data.fieldDecoration ??
               InputDecoration(

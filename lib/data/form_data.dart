@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class FormFieldData {
   final String id;
@@ -6,7 +7,7 @@ class FormFieldData {
   final String placeholder;
   final TextInputType keyboardType;
   final String? error;
-  final String? mask;
+  final List<TextInputFormatter>? formatters;
   final int? maxLenght;
   final bool isSecureText;
   final TextStyle? titleStyle;
@@ -20,7 +21,7 @@ class FormFieldData {
       this.title,
       this.keyboardType = TextInputType.none,
       this.error,
-      this.mask,
+      this.formatters,
       this.maxLenght,
       this.isSecureText = false,
       this.titleStyle,
