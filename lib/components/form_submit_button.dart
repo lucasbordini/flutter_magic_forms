@@ -4,27 +4,35 @@ import 'package:magic_forms/data/form_button_data.dart';
 class FormSubmitButton extends StatelessWidget {
   final FormButtonData data;
   final void Function() onTap;
+  final ValueNotifier<bool> isValid;
 
-  const FormSubmitButton({super.key, required this.onTap, required this.data});
+  const FormSubmitButton(
+      {super.key,
+      required this.onTap,
+      required this.data,
+      required this.isValid});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: data.height,
-      child: ElevatedButton(
-        onPressed: onTap,
-        style: data.style ??
-            ElevatedButton.styleFrom(
-                minimumSize: Size.fromHeight(data.height),
-                backgroundColor: Colors.blueAccent),
-        child: Text(
-          data.title,
-          style: data.titleStyle ??
-              const TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+      child: ValueListenableBuilder<bool>(
+        valueListenable: isValid,
+        builder: (context, valid, child) => ElevatedButton(
+          onPressed: valid ? onTap : null,
+          style: data.style ??
+              ElevatedButton.styleFrom(
+                  minimumSize: Size.fromHeight(data.height),
+                  backgroundColor: Colors.blueAccent),
+          child: Text(
+            data.title,
+            style: data.titleStyle ??
+                const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+          ),
         ),
       ),
     );

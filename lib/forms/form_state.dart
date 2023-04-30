@@ -17,8 +17,8 @@ class FormState extends State<FormView> {
           itemCount: widget.controller.fields.length,
           itemBuilder: (context, index) {
             final field = widget.controller.fields[index];
-            final controller = widget.controller.controllers[field.id]!;
-            final validator = widget.controller.validators[field.id]!;
+            final controller =  widget.controller.controllers[field.id]!;
+            final validator = widget.controller.isAutoValidation ? widget.controller.autoValidators[field.id]! : widget.controller.validators[field.id]!;
             return FormFieldView(
               controller: controller,
               isValid: validator,
@@ -30,6 +30,7 @@ class FormState extends State<FormView> {
         FormSubmitButton(
           onTap: () => widget.controller.validate(),
           data: widget.controller.button,
+          isValid: widget.controller.enabledButton,
         )
       ],
     );

@@ -3,7 +3,7 @@ import 'package:magic_forms/data/form_data.dart';
 
 class FormFieldView extends StatelessWidget {
   final TextEditingController controller;
-  final ValueNotifier<bool> isValid;
+  final ValueNotifier<bool?> isValid;
   final FormFieldData data;
 
   const FormFieldView(
@@ -61,10 +61,10 @@ class FormFieldView extends StatelessWidget {
               ),
         ),
         if (data.error != null)
-          ValueListenableBuilder<bool>(
+          ValueListenableBuilder<bool?>(
             valueListenable: isValid,
             builder: (context, value, child) => Visibility(
-              visible: value,
+              visible: value == false,
               child: Padding(
                 padding: const EdgeInsets.only(top: 2),
                 child: Text(

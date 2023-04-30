@@ -7,12 +7,21 @@ class FormController {
   final FormButtonData button;
   final controllers = <String, TextEditingController>{};
   final validators = <String, ValueNotifier<bool>>{};
+  final autoValidators = <String, ValueNotifier<bool?>>{};
+  final bool isAutoValidation;
+
+  final enabledButton = ValueNotifier(true);
 
   void Function() onSubmit;
 
-  FormController(this.onSubmit, this.fields, this.button) {
+  FormController(this.onSubmit, this.fields, this.button,
+      {this.isAutoValidation = false}) {
     _generateControllers();
-    _generateValidators();
+    if (isAutoValidation) {
+      _generateAutoValidators();
+    } else {
+      _generateValidators();
+    }
   }
 
   void _generateControllers() {
@@ -27,18 +36,47 @@ class FormController {
     }
   }
 
-  void validate() {
-    var isValid = false;
+  void _generateAutoValidators() {
+    enabledButton.value = false;
     controllers.forEach((key, value) {
-      final lenght =
-          fields.firstWhere((element) => element.id == key).minLenght ?? 0;
-      if (value.text.isEmpty || value.text.length < lenght) {
-        validators[key]?.value = false;
+      autoValidators.addAll({key: ValueNotifier(null)});
+      value.addListener(() {
+        if (value.text.isEmpty) {
+          autoValidators[key]?.value = null;
+        } else {
+          autoValidators[key]?.value = value.text.isNotEmpty;
+        }
+        _checkButtonStatusForForm();
+      });
+    });
+  }
+
+  void _checkButtonStatusForForm() {
+    var isValid = true;
+    autoValidators.forEach((key, value) {
+      if (value.value == null || value.value == false) {
         isValid = false;
       }
     });
-    if (isValid) {
+    enabledButton.value = isValid;
+  }
+
+  void validate() {
+    if (isAutoValidation) {
       onSubmit();
+    } else {
+      var isValid = true;
+      controllers.forEach((key, value) {
+        final lenght =
+            fields.firstWhere((element) => element.id == key).minLenght ?? 0;
+        if (value.text.isEmpty || value.text.length < lenght) {
+          validators[key]?.value = false;
+          isValid = false;
+        }
+      });
+      if (isValid) {
+        onSubmit();
+      }
     }
   }
 }
