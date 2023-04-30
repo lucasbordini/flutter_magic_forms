@@ -12,7 +12,7 @@ class FormController {
 
   final enabledButton = ValueNotifier(true);
 
-  void Function() onSubmit;
+  void Function(Map<String, String>) onSubmit;
 
   FormController(this.onSubmit, this.fields, this.button,
       {this.isAutoValidation = false}) {
@@ -63,7 +63,9 @@ class FormController {
 
   void validate() {
     if (isAutoValidation) {
-      onSubmit();
+      final result = <String, String>{};
+      controllers.forEach((key, value) => result.addAll({key: value.text}));
+      onSubmit(result);
     } else {
       var isValid = true;
       controllers.forEach((key, value) {
@@ -75,7 +77,9 @@ class FormController {
         }
       });
       if (isValid) {
-        onSubmit();
+        final result = <String, String>{};
+        controllers.forEach((key, value) => result.addAll({key: value.text}));
+        onSubmit(result);
       }
     }
   }
