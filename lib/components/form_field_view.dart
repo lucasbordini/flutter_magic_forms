@@ -14,57 +14,57 @@ class FormFieldView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (data.title != null)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 4),
-            child: Text(
-              data.title!,
-              style: data.titleStyle ??
-                  const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
-            ),
-          ),
-        TextFormField(
-          controller: controller,
-          textAlignVertical: TextAlignVertical.center,
-          maxLength: data.maxLenght,
-          inputFormatters: data.formatters ?? [],
-          keyboardType: data.keyboardType,
-          obscureText: data.isSecureText,
-          decoration: data.fieldDecoration ??
-              InputDecoration(
-                contentPadding: const EdgeInsets.only(left: 8),
-                filled: true,
-                fillColor: Colors.white,
-                hintText: data.placeholder,
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    width: 1,
-                    color: isValid.value == false ? Colors.red : Colors.grey,
-                  ),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    width: 1,
-                    color: Colors.blueAccent,
-                  ),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
+    return ValueListenableBuilder<bool?>(
+      valueListenable: isValid,
+      builder: (context, value, child) => Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (data.title != null)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Text(
+                data.title!,
+                style: data.titleStyle ??
+                    const TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
               ),
-        ),
-        if (data.error != null)
-          ValueListenableBuilder<bool?>(
-            valueListenable: isValid,
-            builder: (context, value, child) => Visibility(
+            ),
+          TextFormField(
+            controller: controller,
+            textAlignVertical: TextAlignVertical.center,
+            maxLength: data.maxLenght,
+            inputFormatters: data.formatters ?? [],
+            keyboardType: data.keyboardType,
+            obscureText: data.isSecureText,
+            decoration: data.fieldDecoration ??
+                InputDecoration(
+                  contentPadding: const EdgeInsets.only(left: 8),
+                  filled: true,
+                  fillColor: Colors.white,
+                  hintText: data.placeholder,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      width: 1,
+                      color: value == false ? Colors.red : Colors.grey,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      width: 1,
+                      color: Colors.blueAccent,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+          ),
+          if (data.error != null)
+            Visibility(
               visible: value == false,
               child: Padding(
                 padding: const EdgeInsets.only(top: 2),
@@ -78,8 +78,8 @@ class FormFieldView extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }
