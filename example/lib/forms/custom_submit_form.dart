@@ -46,8 +46,7 @@ class _CustomSubmitFormScreenState extends State<CustomSubmitFormScreen> {
             placeholder: "Password",
             isSecureText: true,
             error: "You must provide a password"),
-        FormFieldData(
-            id: zipID, placeholder: "Zip Code", minLenght: 6, maxLenght: 10),
+        FormFieldData(id: zipID, placeholder: "Zip Code", minLength: 6, maxLength: 10),
         FormFieldData(
             id: dateID,
             placeholder: "Date",
@@ -88,7 +87,7 @@ class _CustomSubmitFormScreenState extends State<CustomSubmitFormScreen> {
         title: const Text("Custom Submit Form"),
       ),
       body: SafeArea(
-        child: FormView(
+        child: MagicForm(
             controller: formController, edgeInsets: const EdgeInsets.all(12)),
       ),
     );

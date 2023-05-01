@@ -47,7 +47,7 @@ class _CustomFieldFormScreenState extends State<CustomFieldFormScreen> {
             isSecureText: true,
             error: "You must provide a password"),
         FormFieldData(
-            id: zipID, placeholder: "Zip Code", minLenght: 6, maxLenght: 10),
+            id: zipID, placeholder: "Zip Code", minLength: 6, maxLength: 10),
         FormFieldData(
             id: dateID,
             placeholder: "Date",
@@ -87,7 +87,7 @@ class _CustomFieldFormScreenState extends State<CustomFieldFormScreen> {
         title: const Text("Custom Field Form"),
       ),
       body: SafeArea(
-        child: FormView(
+        child: MagicForm(
           controller: formController,
           edgeInsets: const EdgeInsets.all(12),
           fieldDecoration: myCustomField,

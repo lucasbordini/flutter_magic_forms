@@ -26,7 +26,7 @@ class _AutoValidateFormScreenState extends State<AutoValidateFormScreen> {
         FormFieldData(id: phoneID, placeholder: "Phone number", keyboardType: TextInputType.phone),
         FormFieldData(id: emailID, placeholder: "E-Mail", error: "You must provide an E-mail", errorStyle: const TextStyle(color: Colors.yellow, fontSize: 10, fontWeight: FontWeight.bold)),
         FormFieldData(id: passID, placeholder: "Password", isSecureText: true, error: "You must provide a password"),
-        FormFieldData(id: zipID, placeholder: "Zip Code", minLenght: 6, maxLenght: 10),
+        FormFieldData(id: zipID, placeholder: "Zip Code", minLength: 6, maxLength: 10),
         FormFieldData(id: dateID, placeholder: "Date", formatters: [FilteringTextInputFormatter.digitsOnly, DateInputFormatter()], keyboardType: TextInputType.datetime)
       ];
   FormButtonData get button => FormButtonData(title: "Submit", height: 48);
@@ -47,7 +47,7 @@ class _AutoValidateFormScreenState extends State<AutoValidateFormScreen> {
         title: const Text("Auto Validate"),
       ),
       body: SafeArea(
-        child: FormView(controller: formController, edgeInsets: const EdgeInsets.all(12)),
+        child: MagicForm(controller: formController, edgeInsets: const EdgeInsets.all(12)),
       ),
     );
   }

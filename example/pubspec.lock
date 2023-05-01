@@ -104,7 +104,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "6f17c02e3f6e515944596beb082bb66d0f291679"
+      resolved-ref: d4cd1680c91c299db493e9b70fb1b78fb12f8be7
       url: "https://github.com/lucasbordini/flutter_magic_forms.git"
     source: git
     version: "0.0.1"
