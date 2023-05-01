@@ -46,7 +46,7 @@ class FormFieldView extends StatelessWidget {
             keyboardType: data.keyboardType,
             obscureText: data.isSecureText,
             decoration: value == false
-                ? fieldErrorDecoration ??
+                ? fieldErrorDecoration?.copyWith(hintText: data.placeholder) ??
                     InputDecoration(
                       contentPadding: const EdgeInsets.only(left: 8),
                       filled: true,
@@ -67,7 +67,7 @@ class FormFieldView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     )
-                : fieldDecoration ??
+                : fieldDecoration?.copyWith(hintText: data.placeholder) ??
                     InputDecoration(
                       contentPadding: const EdgeInsets.only(left: 8),
                       filled: true,

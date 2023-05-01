@@ -4,6 +4,7 @@ import 'package:magic_forms/components/form_submit_button.dart';
 import 'package:magic_forms/forms/form_view.dart';
 
 class MagicFormState extends State<FormView> {
+
   @override
   Widget build(BuildContext context) {
     return ListView(
