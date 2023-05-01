@@ -17,12 +17,17 @@ class MagicFormState extends State<FormView> {
           itemCount: widget.controller.fields.length,
           itemBuilder: (context, index) {
             final field = widget.controller.fields[index];
-            final controller =  widget.controller.controllers[field.id]!;
-            final validator = widget.controller.isAutoValidation ? widget.controller.autoValidators[field.id]! : widget.controller.validators[field.id]!;
-            return FormFieldView(
-              controller: controller,
-              isValid: validator,
-              data: field,
+            final controller = widget.controller.controllers[field.id]!;
+            final validator = widget.controller.isAutoValidation
+                ? widget.controller.autoValidators[field.id]!
+                : widget.controller.validators[field.id]!;
+            return Padding(
+              padding: widget.innerInsets ?? EdgeInsets.only(bottom: 8),
+              child: FormFieldView(
+                controller: controller,
+                isValid: validator,
+                data: field,
+              ),
             );
           },
         ),
