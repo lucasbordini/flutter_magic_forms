@@ -6,8 +6,10 @@ class FormButtonData {
   final ButtonStyle? style;
   final TextStyle? titleStyle;
   final double? topPad;
+  final IconData? icon;
 
-  FormButtonData({
+  FormButtonData(
+    this.icon, {
     required this.title,
     required this.height,
     this.style,

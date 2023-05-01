@@ -18,22 +18,40 @@ class FormSubmitButton extends StatelessWidget {
       height: data.height,
       child: ValueListenableBuilder<bool>(
         valueListenable: isValid,
-        builder: (context, valid, child) => ElevatedButton(
-          onPressed: valid ? onTap : null,
-          style: data.style ??
-              ElevatedButton.styleFrom(
-                  minimumSize: Size.fromHeight(data.height),
-                  backgroundColor: Colors.blueAccent),
-          child: Text(
-            data.title,
-            style: data.titleStyle ??
-                const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+        builder: (context, valid, child) => data.icon != null
+            ? ElevatedButton.icon(
+                onPressed: valid ? onTap : null,
+                icon: Icon(data.icon),
+                label: Text(
+                  data.title,
+                  style: data.titleStyle ??
+                      const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
                 ),
-          ),
-        ),
+                style: data.style ??
+                    ElevatedButton.styleFrom(
+                        minimumSize: Size.fromHeight(data.height),
+                        backgroundColor: Colors.blueAccent),
+              )
+            : ElevatedButton(
+                onPressed: valid ? onTap : null,
+                style: data.style ??
+                    ElevatedButton.styleFrom(
+                        minimumSize: Size.fromHeight(data.height),
+                        backgroundColor: Colors.blueAccent),
+                child: Text(
+                  data.title,
+                  style: data.titleStyle ??
+                      const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
+              ),
       ),
     );
   }
