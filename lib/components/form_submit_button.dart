@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:magic_forms/data/form_button_data.dart';
 
-class FormSubmitButton extends StatelessWidget {
+class MagicFormSubmitButton extends StatelessWidget {
   final FormButtonData data;
   final void Function() onTap;
   final ValueNotifier<bool> isValid;
 
-  const FormSubmitButton(
+  const MagicFormSubmitButton(
       {super.key,
       required this.onTap,
       required this.data,
@@ -21,7 +21,10 @@ class FormSubmitButton extends StatelessWidget {
         builder: (context, valid, child) => data.icon != null
             ? ElevatedButton.icon(
                 onPressed: valid ? onTap : null,
-                icon: Icon(data.icon, color: data.titleStyle?.color ?? Colors.white,),
+                icon: Icon(
+                  data.icon,
+                  color: data.titleStyle?.color ?? Colors.white,
+                ),
                 label: Text(
                   data.title,
                   style: data.titleStyle ??

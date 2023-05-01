@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:magic_forms/data/form_data.dart';
 
-class FormFieldView extends StatelessWidget {
+class MagicFormFieldView extends StatelessWidget {
   final TextEditingController controller;
   final ValueNotifier<bool?> isValid;
   final InputDecoration? fieldDecoration;
   final InputDecoration? fieldErrorDecoration;
   final FormFieldData data;
 
-  const FormFieldView(
+  const MagicFormFieldView(
       {super.key,
       required this.controller,
       required this.data,
@@ -41,7 +41,7 @@ class FormFieldView extends StatelessWidget {
           TextFormField(
             controller: controller,
             textAlignVertical: TextAlignVertical.center,
-            maxLength: data.maxLenght,
+            maxLength: data.maxLength,
             inputFormatters: data.formatters ?? [],
             keyboardType: data.keyboardType,
             obscureText: data.isSecureText,

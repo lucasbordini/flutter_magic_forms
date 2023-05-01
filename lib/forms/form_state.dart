@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:magic_forms/components/form_field_view.dart';
 import 'package:magic_forms/components/form_submit_button.dart';
-import 'package:magic_forms/forms/form_view.dart';
+import 'package:magic_forms/magic_forms.dart';
 
-class MagicFormState extends State<FormView> {
-
+class MagicFormState extends State<MagicForm> {
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -19,12 +18,11 @@ class MagicFormState extends State<FormView> {
           itemBuilder: (context, index) {
             final field = widget.controller.fields[index];
             final controller = widget.controller.controllers[field.id]!;
-            final validator = widget.controller.isAutoValidation
-                ? widget.controller.autoValidators[field.id]!
-                : widget.controller.validators[field.id]!;
+            final validator =
+                widget.controller.isAutoValidation ? widget.controller.autoValidators[field.id]! : widget.controller.validators[field.id]!;
             return Padding(
               padding: widget.innerInsets ?? const EdgeInsets.only(bottom: 8),
-              child: FormFieldView(
+              child: MagicFormFieldView(
                 controller: controller,
                 isValid: validator,
                 data: field,
@@ -35,11 +33,11 @@ class MagicFormState extends State<FormView> {
           },
         ),
         SizedBox(height: widget.controller.button.topPad ?? 16),
-        FormSubmitButton(
+        MagicFormSubmitButton(
           onTap: () => widget.controller.validate(),
           data: widget.controller.button,
           isValid: widget.controller.enabledButton,
-        )
+        ),
       ],
     );
   }
