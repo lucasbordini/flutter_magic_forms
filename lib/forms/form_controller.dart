@@ -74,6 +74,8 @@ class FormController {
         if (value.text.isEmpty || value.text.length < lenght) {
           validators[key]?.value = false;
           isValid = false;
+        } else {
+          validators[key]?.value = true;
         }
       });
       if (isValid) {
