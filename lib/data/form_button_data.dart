@@ -9,11 +9,12 @@ class FormButtonData {
   final IconData? icon;
 
   FormButtonData(
-    this.icon, {
+    {
     required this.title,
     required this.height,
     this.style,
     this.titleStyle,
+    this.icon,
     this.topPad,
   });
 }
