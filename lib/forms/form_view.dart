@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magic_forms/forms/form_controller.dart';
+import 'package:magic_forms/forms/form_state.dart';
 
 class FormView extends StatefulWidget {
   final FormController controller;
@@ -8,5 +9,5 @@ class FormView extends StatefulWidget {
   const FormView({super.key, required this.controller, this.edgeInsets});
 
   @override
-  FormState createState() => FormState();
+  MagicFormState createState() => MagicFormState();
 }
