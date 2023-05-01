@@ -38,6 +38,7 @@ class FormFieldView extends StatelessWidget {
           maxLength: data.maxLenght,
           inputFormatters: data.formatters ?? [],
           keyboardType: data.keyboardType,
+          obscureText: data.isSecureText,
           decoration: data.fieldDecoration ??
               InputDecoration(
                 contentPadding: const EdgeInsets.only(left: 8),
