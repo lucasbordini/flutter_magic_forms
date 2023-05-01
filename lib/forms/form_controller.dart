@@ -45,8 +45,9 @@ class FormController {
           autoValidators[key]?.value = null;
         } else {
           final lenght =
-            fields.firstWhere((element) => element.id == key).minLenght ?? 0;
-          autoValidators[key]?.value = value.text.isNotEmpty && value.text.length > lenght;
+              fields.firstWhere((element) => element.id == key).minLenght ?? 0;
+          autoValidators[key]?.value =
+              value.text.isNotEmpty && value.text.length >= lenght;
         }
         _checkButtonStatusForForm();
       });
