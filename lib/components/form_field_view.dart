@@ -46,9 +46,9 @@ class FormFieldView extends StatelessWidget {
                 fillColor: Colors.white,
                 hintText: data.placeholder,
                 enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
+                  borderSide: BorderSide(
                     width: 1,
-                    color: Colors.grey,
+                    color: isValid.value == false ? Colors.red : Colors.grey,
                   ),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
