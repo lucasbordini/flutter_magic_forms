@@ -12,7 +12,6 @@ class FormFieldData {
   final bool isSecureText;
   final TextStyle? titleStyle;
   final TextStyle? errorStyle;
-  final InputDecoration? fieldDecoration;
   final int? minLenght;
 
   FormFieldData(
@@ -26,6 +25,5 @@ class FormFieldData {
       this.isSecureText = false,
       this.titleStyle,
       this.errorStyle,
-      this.fieldDecoration,
       this.minLenght});
 }

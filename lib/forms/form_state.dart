@@ -27,6 +27,8 @@ class MagicFormState extends State<FormView> {
                 controller: controller,
                 isValid: validator,
                 data: field,
+                fieldDecoration: widget.fieldDecoration,
+                fieldErrorDecoration: widget.fieldErrorDecoration,
               ),
             );
           },

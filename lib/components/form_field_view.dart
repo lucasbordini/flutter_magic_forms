@@ -4,13 +4,17 @@ import 'package:magic_forms/data/form_data.dart';
 class FormFieldView extends StatelessWidget {
   final TextEditingController controller;
   final ValueNotifier<bool?> isValid;
+  final InputDecoration? fieldDecoration;
+  final InputDecoration? fieldErrorDecoration;
   final FormFieldData data;
 
   const FormFieldView(
       {super.key,
       required this.controller,
       required this.data,
-      required this.isValid});
+      required this.isValid,
+      this.fieldDecoration,
+      this.fieldErrorDecoration});
 
   @override
   Widget build(BuildContext context) {
@@ -41,27 +45,49 @@ class FormFieldView extends StatelessWidget {
             inputFormatters: data.formatters ?? [],
             keyboardType: data.keyboardType,
             obscureText: data.isSecureText,
-            decoration: data.fieldDecoration ??
-                InputDecoration(
-                  contentPadding: const EdgeInsets.only(left: 8),
-                  filled: true,
-                  fillColor: Colors.white,
-                  hintText: data.placeholder,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 1,
-                      color: value == false ? Colors.red : Colors.grey,
+            decoration: value == false
+                ? fieldErrorDecoration ??
+                    InputDecoration(
+                      contentPadding: const EdgeInsets.only(left: 8),
+                      filled: true,
+                      fillColor: Colors.white,
+                      hintText: data.placeholder,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          width: 1,
+                          color: Colors.red,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          width: 1,
+                          color: Colors.blueAccent,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    )
+                : fieldDecoration ??
+                    InputDecoration(
+                      contentPadding: const EdgeInsets.only(left: 8),
+                      filled: true,
+                      fillColor: Colors.white,
+                      hintText: data.placeholder,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          width: 1,
+                          color: Colors.grey,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          width: 1,
+                          color: Colors.blueAccent,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      width: 1,
-                      color: Colors.blueAccent,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
           ),
           if (data.error != null)
             Visibility(

@@ -6,8 +6,10 @@ class FormView extends StatefulWidget {
   final FormController controller;
   final EdgeInsets? edgeInsets;
   final EdgeInsets? innerInsets;
+  final InputDecoration? fieldDecoration;
+  final InputDecoration? fieldErrorDecoration;
 
-  const FormView({super.key, required this.controller, this.edgeInsets, this.innerInsets});
+  const FormView({super.key, required this.controller, this.edgeInsets, this.innerInsets, this.fieldDecoration, this.fieldErrorDecoration});
 
   @override
   MagicFormState createState() => MagicFormState();
