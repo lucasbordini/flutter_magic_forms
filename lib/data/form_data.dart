@@ -19,7 +19,7 @@ class FormFieldData {
       {required this.id,
       required this.placeholder,
       this.title,
-      this.keyboardType = TextInputType.none,
+      this.keyboardType = TextInputType.text,
       this.error,
       this.formatters,
       this.maxLenght,

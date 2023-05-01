@@ -22,7 +22,7 @@ class MagicFormState extends State<FormView> {
                 ? widget.controller.autoValidators[field.id]!
                 : widget.controller.validators[field.id]!;
             return Padding(
-              padding: widget.innerInsets ?? EdgeInsets.only(bottom: 8),
+              padding: widget.innerInsets ?? const EdgeInsets.only(bottom: 8),
               child: FormFieldView(
                 controller: controller,
                 isValid: validator,
