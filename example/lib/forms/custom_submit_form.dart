@@ -46,7 +46,8 @@ class _CustomSubmitFormScreenState extends State<CustomSubmitFormScreen> {
             placeholder: "Password",
             isSecureText: true,
             error: "You must provide a password"),
-        FormFieldData(id: zipID, placeholder: "Zip Code", minLength: 6, maxLength: 10),
+        FormFieldData(
+            id: zipID, placeholder: "Zip Code", minLength: 6, maxLength: 10),
         FormFieldData(
             id: dateID,
             placeholder: "Date",
@@ -60,7 +61,7 @@ class _CustomSubmitFormScreenState extends State<CustomSubmitFormScreen> {
         title: "Submit",
         height: 48,
         icon: Icons.send,
-        titleStyle: TextStyle(color: Colors.black),
+        titleStyle: const TextStyle(color: Colors.black),
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.yellow,
           foregroundColor: Colors.black,

@@ -21,13 +21,41 @@ class _SimpleFormScreenState extends State<SimpleFormScreen> {
   final dateID = "date_id";
 
   List<FormFieldData> get fields => [
-        FormFieldData(id: nameID, placeholder: "Insert your name", title: "Name"),
-        FormFieldData(id: lastNameID, placeholder: "Last Name", title: "Last Name", titleStyle: const TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w900)),
-        FormFieldData(id: phoneID, placeholder: "Phone number", keyboardType: TextInputType.phone),
-        FormFieldData(id: emailID, placeholder: "E-Mail", error: "You must provide an E-mail", errorStyle: const TextStyle(color: Colors.yellow, fontSize: 10, fontWeight: FontWeight.bold)),
-        FormFieldData(id: passID, placeholder: "Password", isSecureText: true, error: "You must provide a password"),
-        FormFieldData(id: zipID, placeholder: "Zip Code", minLength: 6, maxLength: 10),
-        FormFieldData(id: dateID, placeholder: "Date", formatters: [FilteringTextInputFormatter.digitsOnly, DateInputFormatter()], keyboardType: TextInputType.datetime)
+        FormFieldData(
+            id: nameID, placeholder: "Insert your name", title: "Name"),
+        FormFieldData(
+            id: lastNameID,
+            placeholder: "Last Name",
+            title: "Last Name",
+            titleStyle: const TextStyle(
+                color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w900)),
+        FormFieldData(
+            id: phoneID,
+            placeholder: "Phone number",
+            keyboardType: TextInputType.phone),
+        FormFieldData(
+            id: emailID,
+            placeholder: "E-Mail",
+            error: "You must provide an E-mail",
+            errorStyle: const TextStyle(
+                color: Colors.yellow,
+                fontSize: 10,
+                fontWeight: FontWeight.bold)),
+        FormFieldData(
+            id: passID,
+            placeholder: "Password",
+            isSecureText: true,
+            error: "You must provide a password"),
+        FormFieldData(
+            id: zipID, placeholder: "Zip Code", minLength: 6, maxLength: 10),
+        FormFieldData(
+            id: dateID,
+            placeholder: "Date",
+            formatters: [
+              FilteringTextInputFormatter.digitsOnly,
+              DateInputFormatter()
+            ],
+            keyboardType: TextInputType.datetime)
       ];
   FormButtonData get button => FormButtonData(title: "Submit", height: 48);
 
@@ -47,7 +75,10 @@ class _SimpleFormScreenState extends State<SimpleFormScreen> {
         title: const Text("Simple Form"),
       ),
       body: SafeArea(
-        child: MagicForm(controller: formController, edgeInsets: const EdgeInsets.all(12),),
+        child: MagicForm(
+          controller: formController,
+          edgeInsets: const EdgeInsets.all(12),
+        ),
       ),
     );
   }
