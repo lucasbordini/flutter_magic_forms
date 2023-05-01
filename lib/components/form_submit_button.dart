@@ -21,7 +21,7 @@ class FormSubmitButton extends StatelessWidget {
         builder: (context, valid, child) => data.icon != null
             ? ElevatedButton.icon(
                 onPressed: valid ? onTap : null,
-                icon: Icon(data.icon),
+                icon: Icon(data.icon, color: data.titleStyle?.color ?? Colors.white,),
                 label: Text(
                   data.title,
                   style: data.titleStyle ??
